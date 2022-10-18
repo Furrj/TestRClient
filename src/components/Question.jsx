@@ -3,7 +3,7 @@ const Question = (props) => {
     <div className="card question m-3">
       <div className="card-body">
         <div className="card-text">
-          {props.param1} X {props.param2}
+          {props.question.param1} X {props.question.param2}
         </div><hr />
         <div className="card-text">
           <label htmlFor="answer">Answer</label><br />

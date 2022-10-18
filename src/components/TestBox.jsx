@@ -27,13 +27,16 @@ const TestBox = () => {
     const questionList = [];
 
     for (let i = 1; i <= 10; i++) {
-      const param1 = (Math.floor(Math.random() * (max - min + 1))) + min;
-      const param2 = (Math.floor(Math.random() * (max - min + 1))) + min;
+      const param1 = Math.floor(Math.random() * (max - min + 1)) + min;
+      const param2 = Math.floor(Math.random() * (max - min + 1)) + min;
 
       const question = {
         id: `question${i}`,
-        param1 ,
-        param2
+        param1,
+        param2,
+        correctAnswer: param1 * param2,
+        input: null,
+        answeredCorrectly: null,
       };
 
       questionList.push(question);

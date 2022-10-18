@@ -7,8 +7,7 @@ const Questions = (props) => {
         return (
           <Question
             key={question.id}
-            param1={question.param1}
-            param2={question.param2}
+            question={question}
           />
         );
       })}
