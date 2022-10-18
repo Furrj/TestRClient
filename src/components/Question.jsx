@@ -3,15 +3,19 @@ import { useRef } from "react";
 const Question = (props) => {
   const answerRef = useRef();
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
+
     if (props.question.correctAnswer === parseInt(answerRef.current.value)) {
       props.addToScore();
+      props.question.guessed = parseInt(answerRef.current.value);
+      props.question.correct = true;
+      props.addToResults(props.question);
     } else {
-      console.log("Wrong");
+      props.question.guessed = parseInt(answerRef.current.value);
+      props.question.correct = false;
+      props.addToResults(props.question);
     }
-
-    console.log(props.question.correctAnswer);
-    console.log(answerRef.current.value);
 
     props.submit();
   };
@@ -26,7 +30,7 @@ const Question = (props) => {
         <div className="card-text">
           <label htmlFor="answer">Answer</label>
           <br />
-          <input ref={answerRef} type="float" name="answer" />
+          <input ref={answerRef} type="number" name="answer" />
           <br />
           <button className="mt-2" onClick={submit}>
             Submit

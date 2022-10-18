@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 
 import Question from "./Question";
 
@@ -11,7 +11,7 @@ const Questions = (props) => {
     if (currentQuestion < questionList.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      console.log("out of questions");
+      props.gameOver();
     }
   };
 
@@ -22,11 +22,12 @@ const Questions = (props) => {
         question={q}
         submit={changeCurrentQuestion}
         addToScore={props.addToScore}
+        addToResults={props.addToResults}
       />
     );
   }
 
-  return <div className="questionsCont">{questionList[currentQuestion]}</div>;
+  return <Fragment>{questionList[currentQuestion]}</Fragment>;
 };
 
 export default Questions;
