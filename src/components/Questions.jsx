@@ -1,18 +1,17 @@
+import { useState } from "react";
+
 import Question from "./Question";
 
 const Questions = (props) => {
-  return (
-    <div className="questionsCont">
-      {props.questions.map((question) => {
-        return (
-          <Question
-            key={question.id}
-            question={question}
-          />
-        );
-      })}
-    </div>
-  );
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+
+  const questionList = [];
+
+  for (let q of props.questions) {
+    questionList.push(<Question key={q.id} question={q} />);
+  }
+
+  return <div className="questionsCont">{questionList[currentQuestion]}</div>;
 };
 
 export default Questions;
